@@ -1,0 +1,22 @@
+{
+  "name": "zoopo",
+  "version": "1.0.0",
+  "description": "Zoopo - An invite manager",
+  "main": "Zoopo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mafia-7777/Zoopo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mafia-7777/Zoopo/issues"
+  },
+  "homepage": "https://github.com/Mafia-7777/Zoopo#readme",
+  "dependencies": {
+    "eris": "^0.14.0"
+  }
+}
