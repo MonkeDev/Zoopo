@@ -1,5 +1,12 @@
 {
     "token": "ODA3MDQ4ODM4MzYyOTU1Nzk4.YByUzQ.JcHeBgKO2iq0r9W00-i5aZUDtbk",
+    "mongoURI": "mongodb+srv://Admin:oIarzdDs0ld6MzVxKo7vDp9iG80v3svxLhKeNnArLM2cPTJU@zoopo-bot.b2mfp.mongodb.net/db1",
+    "defaultPrefix": "z!",
+    "mongooseOptions": {
+        "useUnifiedTopology": true,
+        "useNewUrlParser": true
+    },
+
     "ZoopoOptions": {
         "allowedMentions": {
             "everyone": false,

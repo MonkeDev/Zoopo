@@ -1,5 +1,6 @@
 const { Client } = require('eris'),
-    fs = require('fs');
+    fs = require('fs'),
+    mongoose = require('mongoose');
 
 class ZoopoClient extends Client {
     constructor(token, options, config) {
@@ -9,6 +10,10 @@ class ZoopoClient extends Client {
 
         this.commands = new Map();
         this.alli = new Map();
+
+        this.db = {
+            guilds: new (require('./Database/GuildManager'))()
+        }
     };
 
     loadCommands(dir) {
@@ -32,12 +37,16 @@ class ZoopoClient extends Client {
                 this.once(file.name, (...args) => file.run(...args));
                 console.log(`Event ${file.name} loaded as once event!`);
             } else {
-                this.once(file.name, (...args) => file.run(...args));
+                this.on(file.name, (...args) => file.run(...args));
                 console.log(`Event ${file.name} loaded!`);
             }
         });
-
     };
+
+    async connectDatabase() {
+        await mongoose.connect(this.config.mongoURI, this.config.mongooseOptions);
+        console.log('MongoDB connected!');
+    }
 };
 
 module.exports = ZoopoClient;

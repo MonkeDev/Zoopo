@@ -6,4 +6,8 @@ module.exports = class Help extends Base {
             desc: 'If you don\'t know how to use me use this!'
         });
     };
+
+    async run(msg, args, data){
+        msg.channel.createMessage('help')
+    }
 };
