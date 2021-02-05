@@ -13,7 +13,13 @@ class ZoopoClient extends Client {
 
         this.db = {
             guilds: new (require('./Database/GuildManager'))()
-        }
+        };
+
+        this.colors = {
+            main: 0xf7c38e
+        };
+
+        this.inviteCache = new Map();
     };
 
     loadCommands(dir) {

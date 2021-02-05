@@ -8,6 +8,6 @@ module.exports = class Help extends Base {
     };
 
     async run(msg, args, data){
-        msg.channel.createMessage('help')
+        msg.channel.createMessage('help');
     }
 };
