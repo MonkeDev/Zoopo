@@ -23,7 +23,7 @@ class ZoopoClient extends Client {
 
         this.emojis = {
             loading: '<a:loading:787073325822115841>'
-        }
+        };
 
         this.inviteCache = new ExtendedMap();
     };
@@ -31,9 +31,8 @@ class ZoopoClient extends Client {
     loadCommands(dir) {
         const Commands = fs.readdirSync(dir);
         Commands.forEach(cmd => {
-            if(!cmd.endsWith('.js')) {
-                return this.loadCommands(dir + `/${cmd}`);
-            };
+            if(!cmd.endsWith('.js')) return this.loadCommands(dir + `/${cmd}`);
+
             const file = new (require(dir + `/${cmd}`))(this);
             this.commands.set(file.name, file);
             file.alli.forEach(alli => {
@@ -47,6 +46,8 @@ class ZoopoClient extends Client {
     loadEvents(dir) {
         const Events = fs.readdirSync(dir);
         Events.forEach(event => {
+            if(!event.endsWith('.js')) return this.loadEvents(dir + `/${event}`);
+            
             const file = new (require(dir + `/${event}`))(this);
             if(this.config.onceEvents.includes(file.name)) {
                 this.once(file.name, (...args) => file.run(...args));

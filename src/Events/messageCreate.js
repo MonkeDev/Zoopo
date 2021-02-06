@@ -37,6 +37,8 @@ module.exports = class messageCreate extends Base {
             if(!member.permissions.json[perm]) neededBperms.push(perm);
         });
 
+        if(neededBperms.includes('embedLinks')) return;
+
         if(neededMperms[0]) return channel.createMessage({
             embed: {
                 color: this.bot.colors.red,

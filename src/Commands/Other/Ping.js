@@ -1,4 +1,4 @@
-const Base = require('../BaseCommand');
+const Base = require('../../BaseCommand');
 const pm = require('pretty-ms');
 module.exports = class Help extends Base {
     constructor(bot) {

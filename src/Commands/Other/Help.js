@@ -1,4 +1,4 @@
-const Base = require('../BaseCommand');
+const Base = require('../../BaseCommand');
 module.exports = class Help extends Base {
     constructor(bot) {
         super(bot, {
