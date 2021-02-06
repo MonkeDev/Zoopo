@@ -7,7 +7,8 @@ module.exports = class Help extends Base {
             desc: 'If you don\'t know how to use me use this!',
             bPerms: [],
             mPerms: [],
-            usage: 'ping'
+            usage: 'ping',
+            alli: ['latency']
         });
     };
 

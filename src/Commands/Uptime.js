@@ -4,7 +4,8 @@ module.exports = class Help extends Base {
     constructor(bot) {
         super(bot, {
             name: 'uptime',
-            desc: 'Uptime'
+            desc: 'Shows you the bots uptime.',
+            usage: 'uptime'
         });
     };
 

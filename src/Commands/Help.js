@@ -22,7 +22,6 @@ module.exports = class Help extends Base {
 
         const allCategorys =  [ ...new Set( this.bot.commands.filter(x => x.value.category, true).map(x => x.category) ) ];
 
-        console.log(args[0])
         if(!args[0]) {
             allCategorys.forEach(c => {
                 const allCommands =  [ ...new Set( this.bot.commands.filter(x => x.value.category == c, true).map(x => x.name) ) ];
@@ -39,7 +38,7 @@ module.exports = class Help extends Base {
             toSend.embed.description = cmd.desc;
             toSend.embed.title = `Command ${cmd.name}`;
 
-            toSend.embed.fields.push({name: 'Usage', value: cmd.usage == 'None' ? cmd.usage : `${data.guild.prefix}${cmd.usage}`});
+            toSend.embed.fields.push({name: 'Usage', value: cmd.usage == 'None' ? cmd.usage : `\`${data.guild.prefix}${cmd.usage}\``});
             toSend.embed.fields.push({name: 'Alias(es)', value: cmd.alli[0] ? `\`${cmd.alli.join('`, `')}\`` : 'None'});
         };
         
