@@ -1,6 +1,7 @@
 const { Client } = require('eris'),
     fs = require('fs'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    ExtendedMap = require('./ExtendedMap');
 
 class ZoopoClient extends Client {
     constructor(token, options, config) {
@@ -8,18 +9,23 @@ class ZoopoClient extends Client {
 
         this.config = config;
 
-        this.commands = new Map();
-        this.alli = new Map();
+        this.commands = new ExtendedMap();
+        this.alli = new ExtendedMap();
 
         this.db = {
             guilds: new (require('./Database/GuildManager'))()
         };
 
         this.colors = {
-            main: 0xf7c38e
+            main: 0xf7c38e,
+            red: 0xff1800
         };
 
-        this.inviteCache = new Map();
+        this.emojis = {
+            loading: '<a:loading:787073325822115841>'
+        }
+
+        this.inviteCache = new ExtendedMap();
     };
 
     loadCommands(dir) {

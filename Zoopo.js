@@ -10,4 +10,4 @@ const Init = async () => {
     Zoopo.connect();
 };
 
-Init();
+Init(); 
