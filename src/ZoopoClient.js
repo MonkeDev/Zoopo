@@ -31,6 +31,9 @@ class ZoopoClient extends Client {
     loadCommands(dir) {
         const Commands = fs.readdirSync(dir);
         Commands.forEach(cmd => {
+            if(!cmd.endsWith('.js')) {
+                return this.loadCommands(dir + `/${cmd}`);
+            };
             const file = new (require(dir + `/${cmd}`))(this);
             this.commands.set(file.name, file);
             file.alli.forEach(alli => {

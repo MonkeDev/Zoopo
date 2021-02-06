@@ -9,7 +9,7 @@ class BaseCommand {
         this.category = cmd.category || 'Other';
         this.usage = cmd.usage || 'None';
 
-        this.bPerms = cmd.bPerms || ['embedLinks'];
+        this.bPerms = cmd.bPerms || ['embedLinks', 'sendMessages'];
         this.mPerms = cmd.mPerms || [];
 
     };
