@@ -5,14 +5,6 @@ const Schema = mongoose.model('facts', new mongoose.Schema({
     id: { type: String },
     users: { type: Array, default: [] },
     prefix: { type: String, default: config.defaultPrefix },
-    welcome: {
-        inviter_found: { type: String, default: 'Welcome {user.mention}, Invited by {inviter.tag}' },
-        inviter_not_found: { type: String, default: 'Welcome {user.mention}'}
-    },
-    leave: {
-        inviter_found: { type: String, default: 'Googbye {user.mention}, Invited by {inviter.tag}' },
-        inviter_not_found: { type: String, default: 'Googbye {user.mention}'}
-    }
 }));
 
 module.exports = class GuildManager {

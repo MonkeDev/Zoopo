@@ -25,7 +25,6 @@ class ZoopoClient extends Client {
             loading: '<a:loading:787073325822115841>'
         };
 
-        this.inviteCache = new ExtendedMap();
     };
 
     loadCommands(dir) {
@@ -47,7 +46,7 @@ class ZoopoClient extends Client {
         const Events = fs.readdirSync(dir);
         Events.forEach(event => {
             if(!event.endsWith('.js')) return this.loadEvents(dir + `/${event}`);
-            
+
             const file = new (require(dir + `/${event}`))(this);
             if(this.config.onceEvents.includes(file.name)) {
                 this.once(file.name, (...args) => file.run(...args));
@@ -62,7 +61,8 @@ class ZoopoClient extends Client {
     async connectDatabase() {
         await mongoose.connect(this.config.mongoURI, this.config.mongooseOptions);
         console.log('MongoDB connected!');
-    }
+    };
+
 };
 
 module.exports = ZoopoClient;
