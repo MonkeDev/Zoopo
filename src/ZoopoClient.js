@@ -25,6 +25,7 @@ class ZoopoClient extends Client {
             loading: '<a:loading:787073325822115841>'
         };
 
+        this.baseApiUrl = 'https://api.monke.vip'
     };
 
     loadCommands(dir) {
@@ -61,6 +62,17 @@ class ZoopoClient extends Client {
     async connectDatabase() {
         await mongoose.connect(this.config.mongoURI, this.config.mongooseOptions);
         console.log('MongoDB connected!');
+    };
+
+    isUrl(url) {
+        const pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name and extension
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?'+ // port
+        '(\\/[-a-z\\d%@_.~+&:]*)*'+ // path
+        '(\\?[;&a-z\\d%@_.,~+&:=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return pattern.test(url);
     };
 
 };

@@ -8,6 +8,12 @@ module.exports = class messageCreate extends Base {
 
     async run(msg) {
 
+        if(msg.attachments[0]) {
+            if (msg.attachments[0].url.endsWith('.png') || msg.attachments[0].url.endsWith('.jpeg') || msg.attachments[0].url.endsWith('.jpg')) {
+                msg.channel.lastAttachment = msg.attachments[0];
+            };
+        };
+
         if(msg.author.bot || !msg.guildID) return;
 
         const { content, guildID, member, channel } = msg;
