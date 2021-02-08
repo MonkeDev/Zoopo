@@ -18,7 +18,9 @@ class ZoopoClient extends Client {
 
         this.colors = {
             main: 0xf7c38e,
-            red: 0xff1800
+            red: 0xff1800,
+            yellow: 0xFFFF00,
+            green: 0x008000
         };
 
         this.emojis = {

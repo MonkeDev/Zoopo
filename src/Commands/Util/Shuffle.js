@@ -5,7 +5,8 @@ module.exports = class Help extends Base {
         super(bot, {
             name: 'shuffle',
             desc: 'shuffle some text',
-            usage: 'shuffle <text>'
+            usage: 'shuffle <text>',
+            category: 'Util'
         });
     };
 
@@ -13,7 +14,7 @@ module.exports = class Help extends Base {
 
 
         const res = await (await (fetch(`${this.bot.baseApiUrl}/utils/shuffle?key=${this.bot.config.apiKey}&content=${encodeURI(args.join(' ') || 'What would you like to shuffle?')}`))).json();
-        
+
         msg.channel.createMessage(res.result);
 
 
