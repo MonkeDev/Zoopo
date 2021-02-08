@@ -34,10 +34,7 @@ module.exports = class Help extends Base {
         const res = await ( await fetch(encodeURI(`${this.bot.baseApiUrl}/canvas/resize?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}${x ? `&x=${x}` : ''}${y ? `&y=${y}` : ''}`))).buffer();
 
             
-        msg.channel.createMessage('', {file: res, name: 'fuc.png'})
-            
+        msg.channel.createMessage('', {file: res, name: 'resized.png'});
 
-
-        
     };
 };
