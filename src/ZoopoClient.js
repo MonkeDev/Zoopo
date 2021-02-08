@@ -72,7 +72,8 @@ class ZoopoClient extends Client {
         '(\\/[-a-z\\d%@_.~+&:]*)*'+ // path
         '(\\?[;&a-z\\d%@_.,~+&:=-]*)?'+ // query string
         '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-        return pattern.test(url);
+        if(!pattern.test(url)) return false;
+        else return url;
     };
 
 };

@@ -15,7 +15,7 @@ module.exports = class Help extends Base {
 
         const user = msg.mentions[0] || this.bot.users.get(args[0]);
 
-        const imgUrl = user ? user.staticAvatarURL : msg.channel.lastAttachment ?  msg.channel.lastAttachment.proxy_url : null || args[0];
+        const imgUrl = user ? user.staticAvatarURL : null || this.bot.isUrl(args[0]) ? args[0] : null || msg.channel.lastAttachment ?  msg.channel.lastAttachment.proxy_url : null;
 
         
         if(!imgUrl) return msg.channel.createMessage('I could not find a image in this channel, Please provide me with a user or a image URL.');
