@@ -67,13 +67,13 @@ class ZoopoClient extends Client {
     };
 
     isUrl(url) {
-        const pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name and extension
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?'+ // port
-        '(\\/[-a-z\\d%@_.~+&:]*)*'+ // path
-        '(\\?[;&a-z\\d%@_.,~+&:=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        const pattern = new RegExp('^((ft|htt)ps?:\\/\\/)?'+ 
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ 
+        '(\\:\\d+)?'+ 
+        '(\\/[-a-z\\d%@_.~+&:]*)*'+ 
+        '(\\?[;&a-z\\d%@_.,~+&:=-]*)?'+ 
+        '(\\#[-a-z\\d_]*)?$','i'); 
         if(!pattern.test(url)) return false;
         else return url;
     };
