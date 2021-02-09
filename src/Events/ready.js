@@ -8,5 +8,8 @@ module.exports = class messageCreate extends Base {
 
     async run() {
         console.log(this.bot.user.username + '#' + this.bot.user.discriminator + ' is ready!');
-    }
-}
+        this.bot.editStatus('idle', {
+            name: 'Ping for prefix!',
+        });
+    };
+};

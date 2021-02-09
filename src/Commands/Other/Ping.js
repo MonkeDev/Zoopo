@@ -25,18 +25,20 @@ module.exports = class Help extends Base {
                         value: this.bot.emojis.loading
                     },
                     {
-                        name: 'Message responce',
+                        name: 'Message response',
                         value: this.bot.emojis.loading
                     }
                 ]
             }
         }
 
+        const Start = Date.now();
         const message = await msg.channel.createMessage(toSend);
+        const End = Date.now() - Start
 
         toSend.embed.fields[0].value = pm(data.ping);
         toSend.embed.fields[1].value = pm(msg.channel.guild.shard.latency);
-        toSend.embed.fields[2].value = pm(message.createdAt - Date.now());
+        toSend.embed.fields[2].value = pm(End);
 
         message.edit(toSend);
 

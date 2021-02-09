@@ -7,6 +7,10 @@
         "useUnifiedTopology": true,
         "useNewUrlParser": true
     },
+    "logs": {
+        "guildID": "767569427935133736",
+        "channelID": "808833177493438465"
+    },
     "ZoopoOptions": {
         "allowedMentions": {
             "everyone": false,
