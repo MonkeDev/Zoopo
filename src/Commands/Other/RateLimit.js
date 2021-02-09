@@ -13,7 +13,7 @@ module.exports = class Help extends Base {
     async run(msg, args, data){
 
         const res = await (await (fetch(`${this.bot.baseApiUrl}/info/ratelimit?key=${this.bot.config.apiKey}`))).json();
-        console.log(res)
+
         const green = res.max / 2.8;
         const yellow = res.max / 1.22;
 

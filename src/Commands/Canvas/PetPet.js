@@ -3,10 +3,10 @@ const fetch = require('node-fetch').default;
 module.exports = class Help extends Base {
     constructor(bot) {
         super(bot, {
-            name: 'dither565',
-            desc: 'Place a dither565 filter on a image',
-            usage: 'dither565 [imgUrl | user]',
-            category: 'ImageManipulation',
+            name: 'petpet',
+            desc: 'petpet :yum:',
+            usage: 'petpet [imgUrl | user]',
+            category: 'Canvas',
             bPerms: ['attachFiles'],
         });
     };
@@ -20,8 +20,8 @@ module.exports = class Help extends Base {
         if(!imgUrl) return msg.channel.createMessage('I could not find a image in this channel, Please provide me with a user or a image URL.');
         if(!this.bot.isUrl(imgUrl)) return msg.channel.createMessage('Please give me a **valid** URL.');
         
-        const buffer = await (await (fetch(`${this.bot.baseApiUrl}/canvas/dither565?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}`))).buffer();
+        const buffer = await (await (fetch(`${this.bot.baseApiUrl}/canvas/petpet?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}`))).buffer();
 
-        msg.channel.createMessage('', {file: buffer, name: `dither565.png`});
+        msg.channel.createMessage('', {file: buffer, name: `petpet.gif`});
     };
 };

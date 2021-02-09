@@ -6,7 +6,7 @@ module.exports = class Help extends Base {
             name: 'resize',
             desc: 'pixelate a image',
             usage: 'pixelate [imgUrl | user] <X> <Y>',
-            category: 'ImageManipulation',
+            category: 'Canvas',
             bPerms: ['attachFiles'],
         });
     };

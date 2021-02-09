@@ -3,10 +3,9 @@ const fetch = require('node-fetch').default;
 module.exports = class Help extends Base {
     constructor(bot) {
         super(bot, {
-            name: 'pixelate',
-            desc: 'pixelate a image',
-            usage: 'pixelate [imgUrl | user]',
-            category: 'ImageManipulation',
+            name: '80s',
+            usage: '80s [imgUrl | user]',
+            category: 'Canvas',
             bPerms: ['attachFiles'],
         });
     };
@@ -20,8 +19,8 @@ module.exports = class Help extends Base {
         if(!imgUrl) return msg.channel.createMessage('I could not find a image in this channel, Please provide me with a user or a image URL.');
         if(!this.bot.isUrl(imgUrl)) return msg.channel.createMessage('Please give me a **valid** URL.');
         
-        const buffer = await (await (fetch(`${this.bot.baseApiUrl}/canvas/pixelate?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}&val=7`))).buffer();
+        const buffer = await (await (fetch(`${this.bot.baseApiUrl}/canvas/80s?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}`))).buffer();
 
-        msg.channel.createMessage('', {file: buffer, name: `pixelate.png`});
+        msg.channel.createMessage('', {file: buffer, name: `80s.png`});
     };
 };

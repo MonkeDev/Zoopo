@@ -3,10 +3,10 @@ const fetch = require('node-fetch').default;
 module.exports = class Help extends Base {
     constructor(bot) {
         super(bot, {
-            name: 'greyscale',
-            desc: 'greyscale a image',
-            usage: 'greyscale [imgUrl | user]',
-            category: 'ImageManipulation',
+            name: 'sepia',
+            desc: 'Add a sepia filter on a image',
+            usage: 'sepia [imgUrl | user]',
+            category: 'Canvas',
             bPerms: ['attachFiles'],
         });
     };
@@ -20,8 +20,8 @@ module.exports = class Help extends Base {
         if(!imgUrl) return msg.channel.createMessage('I could not find a image in this channel, Please provide me with a user or a image URL.');
         if(!this.bot.isUrl(imgUrl)) return msg.channel.createMessage('Please give me a **valid** URL.');
         
-        const buffer = await (await (fetch(`${this.bot.baseApiUrl}/canvas/greyscale?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}`))).buffer();
+        const buffer = await (await (fetch(`${this.bot.baseApiUrl}/canvas/sepia?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}`))).buffer();
 
-        msg.channel.createMessage('', {file: buffer, name: `greyscale.png`});
+        msg.channel.createMessage('', {file: buffer, name: `sepia.png`});
     };
 };
