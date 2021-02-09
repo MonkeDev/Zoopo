@@ -8,6 +8,23 @@ module.exports = class messageCreate extends Base {
 
     async run(msg) {
 
+        const { content, guildID, member, channel } = msg;
+
+        const data = {};
+
+        const start = Date.now();
+        data.guild = await this.bot.db.guilds.get(guildID);
+        data.ping = Date.now() - start;
+
+        if(msg.content == `<@${this.bot.user.id}>` || msg.content == `<@!${this.bot.user.id}>`) {
+            msg.channel.createMessage({
+                embed: {
+                    color: this.bot.colors.main,
+                    title: `Hello, ${msg.author.username} :wave:`,
+                    description: `My prefix in **${msg.channel.guild.name}** is **${data.guild.prefix}**.\nI'm a bot created by [MonkeDev](https://monkedev.com) with the purpose of using their [API](https://api.monkedev.com).`
+                }
+            })
+        }
         if(msg.attachments[0]) {
             if (msg.attachments[0].url.endsWith('.png') || msg.attachments[0].url.endsWith('.jpeg') || msg.attachments[0].url.endsWith('.jpg')) {
                 msg.channel.lastAttachment = msg.attachments[0];
@@ -16,13 +33,8 @@ module.exports = class messageCreate extends Base {
 
         if(msg.author.bot || !msg.guildID) return;
 
-        const { content, guildID, member, channel } = msg;
+       
 
-        const data = {};
-
-        const start = Date.now();
-        data.guild = await this.bot.db.guilds.get(guildID);
-        data.ping = Date.now() - start;
 
         if(!content.startsWith(data.guild.prefix)) return;
         
