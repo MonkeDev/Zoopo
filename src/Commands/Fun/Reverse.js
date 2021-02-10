@@ -13,13 +13,13 @@ module.exports = class Help extends Base {
     async run(msg, args, data){
 
 
-        const res = await (await (fetch(`${this.bot.baseApiUrl}/fun/reverse?key=${this.bot.config.apiKey}&content=${encodeURI(args.join(' ') || 'What would you like to shuffle?')}`))).json();
+        const res = await (await (fetch(`${this.bot.baseApiUrl}/fun/reverse?key=${this.bot.config.apiKey}&content=${encodeURI(args.join(' ').slice(0, 1000) || 'What would you like to shuffle?')}`))).json();
         msg.channel.createMessage({ embed: {
             color: this.bot.colors.main,
             fields: [
                 {
                     name: "__Original__:",
-                    value: `\`${args.join(' ')}\``,
+                    value: `\`${args.join(' ').slice(0, 1000)}\``,
                     inline: true
                 },
                 {
