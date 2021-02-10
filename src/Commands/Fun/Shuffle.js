@@ -11,7 +11,7 @@ module.exports = class Help extends Base {
     };
 
     async run(msg, args, data){
-        if(!args[0]) return msg.channel.createMessage(`Add an argument brub, \`${data.guild.prefix}shuffle <text>\``);
+        if(!args[0]) return msg.channel.createMessage(`Add an argument please, \`${data.guild.prefix}shuffle <text>\``);
         const res = await (await (fetch(`${this.bot.baseApiUrl}/fun/shuffle?key=${this.bot.config.apiKey}&content=${encodeURI(args.join(' ').slice(0, 1000) || 'What would you like to shuffle?')}`))).json();
         msg.channel.createMessage({ embed: {
             color: this.bot.colors.main,
