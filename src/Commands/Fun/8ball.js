@@ -11,7 +11,7 @@ module.exports = class Help extends Base {
     };
 
     async run(msg, args, data){
-        if(!args[0]) return msg.channel.createMessage('What is your question?');
+        if(!args[0]) return msg.channel.createMessage(`What is your question? | \`${data.guild.prefix}8ball <Question>\``);
         const res = await (await (fetch(`${this.bot.baseApiUrl}/fun/8ball?key=${this.bot.config.apiKey}`))).json();
         msg.channel.createMessage({ embed: {
             color: this.bot.colors.main,
