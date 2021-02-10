@@ -25,12 +25,12 @@ module.exports = class Help extends Base {
                     color: res.used < green ? this.bot.colors.green : null || res.used < yellow ? this.bot.colors.yellow : null || this.bot.colors.red,
                     fields: [
                         {
-                            name: 'Used',
+                            name: '__Used__:',
                             value: res.used,
                             inline: true
                         },
                         {
-                            name: 'Max',
+                            name: '__Max__:',
                             value: res.max,
                             inline: true
                         }

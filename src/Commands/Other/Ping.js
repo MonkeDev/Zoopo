@@ -17,15 +17,15 @@ module.exports = class Help extends Base {
                 color: this.bot.colors.main,
                 fields: [
                     {
-                        name: 'Database',
+                        name: '__Database__:',
                         value: this.bot.emojis.loading
                     },
                     {
-                        name: `Shard ${msg.channel.guild.shard.id}`,
+                        name: `__Shard | ${msg.channel.guild.shard.id}__:`,
                         value: this.bot.emojis.loading
                     },
                     {
-                        name: 'Message response',
+                        name: '__Message Response__:',
                         value: this.bot.emojis.loading
                     }
                 ]

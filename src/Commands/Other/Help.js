@@ -36,8 +36,8 @@ module.exports = class Help extends Base {
             toSend.embed.description = cmd.desc;
             toSend.embed.title = `Command ${cmd.name}`;
 
-            toSend.embed.fields.push({name: 'Usage', value: cmd.usage == 'None' ? cmd.usage : `\`${data.guild.prefix}${cmd.usage}\``});
-            toSend.embed.fields.push({name: 'Alias(es)', value: cmd.alli[0] ? `\`${cmd.alli.join('`, `')}\`` : 'None'});
+            toSend.embed.fields.push({name: '__Usage__:', value: cmd.usage == 'None' ? cmd.usage : `\`${data.guild.prefix}${cmd.usage}\``});
+            toSend.embed.fields.push({name: '__Alias(es)__:', value: cmd.alli[0] ? `\`${cmd.alli.join('`, `')}\`` : 'None'});
         };
         
 
