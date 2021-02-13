@@ -15,7 +15,7 @@ module.exports = class Help extends Base {
         const res = await (await (fetch(`${this.bot.baseApiUrl}/fun/8ball?key=${this.bot.config.apiKey}`))).json();
         msg.channel.createMessage({ embed: {
             color: this.bot.colors.main,
-            title: `:question: | __Question__: \`${args.join('').slice(0, 210)}\``,
+            title: `:question: | __Question__: \`${args.join(' ').slice(0, 210)}\``,
             description: `:mag_right: | **__Answer__**: \`${res.answer}\``
         }});     
     }

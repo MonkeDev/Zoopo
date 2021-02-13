@@ -36,9 +36,7 @@ module.exports = class messageCreate extends Base {
         if(msg.author.bot || !msg.guildID) return;
 
        
-
-
-        if(!content.startsWith(data.guild.prefix)) return;
+        if(!content.toLowerCase().startsWith(data.guild.prefix.toLowerCase())) return;
         
     
         const args = content.split(/ +/);
@@ -47,6 +45,9 @@ module.exports = class messageCreate extends Base {
 
         if(!cmd) return;
 
+        const ME = await msg.channel.guild.members.get(this.bot.user.id);
+        if(!msg.channel.permissionsOf(this.bot.user.id).has('sendMessages') || !msg.channel.permissionsOf(this.bot.user.id).has('embedLinks')) return;
+
         const neededMperms = [];
         cmd.mPerms.forEach(perm => {
             if(!member.permissions.json[perm]) neededMperms.push(perm);
@@ -54,10 +55,8 @@ module.exports = class messageCreate extends Base {
 
         const neededBperms = [];
         cmd.bPerms.forEach(perm => {
-            if(!member.permissions.json[perm]) neededBperms.push(perm);
+            if(!ME.permissions.json[perm]) neededBperms.push(perm);
         });
-
-        if(neededBperms.includes('embedLinks')) return;
 
         if(neededMperms[0]) return channel.createMessage({
             embed: {
