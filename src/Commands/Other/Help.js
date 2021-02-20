@@ -22,6 +22,7 @@ module.exports = class Help extends Base {
 
         if(!args[0]) {
             allCategorys.forEach(c => {
+                if(c == 'Owner') return;
                 const allCommands =  [ ...new Set( this.bot.commands.filter(x => x.value.category == c, true).map(x => x.name) ) ];
                 toSend.embed.fields.push({name: c, value: `\`${allCommands.join('`, `')}\``});
             });

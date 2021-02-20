@@ -8,6 +8,7 @@ module.exports = class messageCreate extends Base {
 
     async run(msg) {
 
+        msg.channel.send = msg.channel.createMessage;
         // if(msg.channel.guild.id != this.bot.config.logs.guildID) return;
         
         const { content, guildID, member, channel } = msg;
