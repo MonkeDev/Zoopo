@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-    config = require('../../../Config.json');
+    config = require('../../Config.json');
 
 const Schema = mongoose.model('facts', new mongoose.Schema({
     id: { type: String },
