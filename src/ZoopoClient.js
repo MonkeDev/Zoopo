@@ -27,7 +27,7 @@ class ZoopoClient extends Client {
             loading: '<a:loading:787073325822115841>'
         };
 
-        this.baseApiUrl = 'https://api.monke.vip'
+        this.baseApiUrl = 'https://api.monkedev.com'
     };
 
     loadCommands(dir) {

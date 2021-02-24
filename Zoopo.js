@@ -1,5 +1,5 @@
 const ZoopoClient = require('./src/ZoopoClient'),
-    Config = require('./Config.json'),
+    Config = require('../Config.json'),
     Zoopo = new ZoopoClient(Config.token, Config.ZoopoOptions, Config);
 
 const Init = async () => {
