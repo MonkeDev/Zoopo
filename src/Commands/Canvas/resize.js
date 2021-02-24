@@ -31,10 +31,16 @@ module.exports = class Help extends Base {
         };
 
         if(!x && !y) return msg.channel.createMessage('Missing both **X** and **Y** you have to give at-least one.')
-        const res = await ( await fetch(encodeURI(`${this.bot.baseApiUrl}/canvas/resize?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}${x ? `&x=${x}` : ''}${y ? `&y=${y}` : ''}`))).buffer();
-
+        // const res = await ( await fetch(encodeURI(`${this.bot.baseApiUrl}/canvas/resize?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}${x ? `&x=${x}` : ''}${y ? `&y=${y}` : ''}`))).buffer();
+        let buffer;
+        try{
+            buffer = await (await (fetch(encodeURI(`${this.bot.baseApiUrl}/canvas/resize?key=${this.bot.config.apiKey}&imgUrl=${imgUrl}${x ? `&x=${x}` : ''}${y ? `&y=${y}` : ''}`)))).buffer();
+        } catch (err) {
+            console.log(`${__filename} - ${err}`);
+            return msg.channel.createMessage('An error happened, Joined my support server for help! ||<https://monkedev.com/r/discord>||');
+        }
             
-        msg.channel.createMessage('', {file: res, name: 'resized.png'});
+        msg.channel.createMessage('', {file: buffer, name: 'resized.png'});
 
     };
 };
