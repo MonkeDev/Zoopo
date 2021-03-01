@@ -19,6 +19,7 @@
   "dependencies": {
     "eris": "^0.14.0",
     "extendedmap": "^1.0.4",
+    "haste-pls": "^1.0.3",
     "mongoose": "^5.11.15",
     "node-fetch": "^2.6.1",
     "node-schedule": "^2.0.0",
