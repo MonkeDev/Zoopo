@@ -42,8 +42,8 @@ module.exports = class Help extends Base {
         evaled = evaled.split(this.bot.config.token).join("botToken");
 
         if(evaled.length > 1900) {
-            const bin = await new hastePls(evaled);
-            msg.channel.send(bin.link)
+            const bin = await new hastePls(evaled).post()
+            msg.channel.send(bin.link);
            // evaled = evaled.slice(0, 1900);
         } else msg.channel.send(`${Date.now() - startTime} \`\`\`js\n${evaled}\`\`\``);
 
