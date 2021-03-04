@@ -32,16 +32,34 @@ app.get('/', (req, res) => {
 
 // Votes
 app.post('/vote', bodyParser.json(), (req, res) => {
-    console.log(req.headers, req.body);
+    // console.log(req.headers, req.body);
     const { authorization } = req.headers;
     const { bot, user } = req.body;
     if(authorization != Config['top.gg_auth']) {
       console.log(`No auth from ${req.headers['user-agent']}, auth: ${authorization}`);
       return res.status(400).send('Wrong auth :sob:');
     };
-    const howMany = Math.floor(Math.random() * 3000);
-    Zoopo.createMessage('779441136719757323', `Wassup <@!${user}>, Thank you for voting for Zoopo! You earned ${howMany} points!`);
-    console.log(user)
+    const howMany = Math.floor(Math.random() * 3000); 
+    // Wassup <@!${user}>, Thank you for voting for Zoopo, You earned ${howMany} points!
+    Zoopo.createMessage('779441136719757323', {
+      content: `<@!${user}>`,
+      embed: {
+        description: `Thank you for voting for me!`,
+        fields: [
+          {
+            name: 'Points gained',
+            value: `${howMany}`,
+            inline: true
+          },
+          {
+            name: 'Vote link',
+            value: 'https://top.gg/bot/807048838362955798/vote',
+            inline: true
+          }
+        ]
+      }
+    });
+    // console.log(user)
     // 
 
     fetch('https://afk.monkedev.com/points/add', { method: 'POST', headers: { userid: user, howmany: howMany, auth: Config.adminKey }}).then(res => res.text()).then(console.log)
