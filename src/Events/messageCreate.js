@@ -24,7 +24,7 @@ module.exports = class messageCreate extends Base {
                 embed: {
                     color: this.bot.colors.main,
                     title: `Hello, ${msg.author.username} :wave:`,
-                    description: `My prefix in **${msg.channel.guild.name}** is **${data.guild.prefix}**.\nI'm a bot created by [MonkeDev](https://monkedev.com) with the purpose of using their [API](https://api.monkedev.com), if you need help join our [support server](https://discord.gg/tqeyYrS43A)!`
+                    description: `My prefix in **${msg.channel.guild.name}** is **${data.guild.prefix}**.\nI'm a bot created by [MonkeDev](https://monkedev.com) with the purpose of using their [API](https://api.monkedev.com), if you need help join my [support server](https://discord.gg/tqeyYrS43A)!`
                 }
             })
         }
