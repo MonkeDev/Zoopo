@@ -11,6 +11,7 @@ module.exports = class Help extends Base {
     async run(msg, args, data){
 
         const toSend = {
+            content: 'Support server: https://discord.gg/tqeyYrS43A',
             embed: {
                 color: this.bot.colors.main,
                 fields: [],
