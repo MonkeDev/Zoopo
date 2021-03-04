@@ -68,12 +68,7 @@ app.post('/vote', bodyParser.json(), (req, res) => {
         ],
         color: Number(getRandomColor())
       }
-    }).then(m => {
-      m.edit({
-        content: '',
-        embed: m.embeds[0]
-      });
-    });
+    })
     // console.log(user)
     // 
 
