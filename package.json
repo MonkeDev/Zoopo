@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Mafia-7777/Zoopo#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "eris": "^0.14.0",
+    "express": "^4.17.1",
     "extendedmap": "^1.0.4",
     "haste-pls": "^1.0.3",
     "mongoose": "^5.11.15",
