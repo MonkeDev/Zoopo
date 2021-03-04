@@ -52,7 +52,6 @@ app.listen(port, () => console.log('On port: ' + port));
 
 // Server count 
 setInterval(() => {
-  console.log(Zoopo.guilds.size, Zoopo.shards.size)
   fetch('https://top.gg/api/bots/807048838362955798/stats', {
     method: 'POST',
     body: JSON.stringify({
@@ -64,4 +63,4 @@ setInterval(() => {
       'Content-Type': 'application/json'
     }
   });
-}, 10000); // 1 min
+}, 1000 * 60); // 1 min
