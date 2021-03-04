@@ -21,6 +21,15 @@ http.createServer(function (req, res) {
 }).listen(25569);
 */
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '0x';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 const app = require('express')();
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch').default;
@@ -53,11 +62,17 @@ app.post('/vote', bodyParser.json(), (req, res) => {
           },
           {
             name: 'Vote link',
-            value: 'https://top.gg/bot/807048838362955798/vote',
+            value: '[Click ME](https://top.gg/bot/807048838362955798/vote)',
             inline: true
           }
-        ]
+        ],
+        color: Number(getRandomColor())
       }
+    }).then(m => {
+      m.edit({
+        content: '',
+        embed: m.embeds[0]
+      });
     });
     // console.log(user)
     // 
