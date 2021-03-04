@@ -75,6 +75,9 @@ module.exports = class messageCreate extends Base {
         });
 
 
-        cmd.run(msg, args.slice(1), data);
+        cmd.run(msg, args.slice(1), data).catch(err => {
+            msg.channel.send('An error has happened, Join my support server for help! || https://discord.gg/5q8rQeA3m2 ||');
+            throw err;
+        })
     }
 }
