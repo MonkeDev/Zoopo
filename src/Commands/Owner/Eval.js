@@ -29,7 +29,7 @@ module.exports = class Help extends Base {
             evaled = hasAwait ? await eval(`(async () => { ${hasReturn ? " " : "return"} ${input} })()`) : eval(input);
             if(typeof evaled != "string"){
                 evaled = inspect(evaled, {
-                    depth: +!(inspect(evaled, { depth: 2 }))
+                    depth: Number(msg.content.slice(-1)) || +!(inspect(evaled, { depth: 2 }))
                     //depth: 1
                 });
             }
