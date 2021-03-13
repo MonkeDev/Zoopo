@@ -32,9 +32,9 @@ module.exports = class Help extends Base {
             }
         }
 
-        const Start = Date.now();
+
         const message = await msg.channel.createMessage(toSend);
-        const End = Date.now() - Start
+        const End = Date.now() - message.createdAt
 
         toSend.embed.fields[0].value = pm(data.ping);
         toSend.embed.fields[1].value = pm(msg.channel.guild.shard.latency);
