@@ -11,6 +11,7 @@ const Schema = mongoose.model('facts', new mongoose.Schema({
 module.exports = class GuildManager {
     constructor() {
         this.cache = new Map();
+        this.schema = Schema;
 
         Schema.find().then(data => {
             data.forEach(guildData => {

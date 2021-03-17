@@ -24,7 +24,7 @@ module.exports = class messageCreate extends Base {
 
         if(data.guild.chatChannel === msg.channel.id) {
             if(msg.author.bot) return;
-            
+
             if(this.chatCooldown.has(msg.author.id)) return 
             else {
                 this.chatCooldown.set(msg.author.id, Date.now());
@@ -36,6 +36,7 @@ module.exports = class messageCreate extends Base {
                 return msg.channel.send({
                     content: res.response,
                     messageReference: { messageID: msg.id }
+                    
                 });
             };
         };
