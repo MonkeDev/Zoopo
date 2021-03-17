@@ -1,9 +1,12 @@
 const Base = require('../BaseEvent');
+const fetch = require('node-fetch').default;
 module.exports = class messageCreate extends Base {
     constructor(bot) {
         super(bot, {
             name: 'messageCreate'
         });
+
+        this.chatCooldown = new Map();
     };
 
     async run(msg) {
@@ -18,6 +21,22 @@ module.exports = class messageCreate extends Base {
         const start = Date.now();
         data.guild = await this.bot.db.guilds.get(guildID);
         data.ping = Date.now() - start;
+
+        if(data.guild.chatChannel === msg.channel.id) {
+            if(this.chatCooldown.has(msg.author.id)) return 
+            else {
+                this.chatCooldown.set(msg.author.id, Date.now());
+                setTimeout(() => {
+                    this.chatCooldown.delete(msg.author.id);
+                }, 1500);
+
+                const res = await (await fetch(`${this.bot.baseApiUrl}/fun/chat?key=${this.bot.config.apiKey}&msg=${encodeURIComponent(msg.content)}&uid=${msg.author.id}`)).json();
+                return msg.channel.send({
+                    content: res.response,
+                    messageReference: { messageID: msg.id }
+                });
+            };
+        };
 
         if(msg.content == `<@${this.bot.user.id}>` || msg.content == `<@!${this.bot.user.id}>`) {
             msg.channel.createMessage({
@@ -78,6 +97,6 @@ module.exports = class messageCreate extends Base {
         cmd.run(msg, args.slice(1), data).catch(err => {
             msg.channel.send('An error has happened, Join my support server for help! || https://discord.gg/5q8rQeA3m2 ||');
             throw err;
-        })
+        });
     }
 }
