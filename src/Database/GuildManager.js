@@ -5,6 +5,7 @@ const Schema = mongoose.model('facts', new mongoose.Schema({
     id: { type: String },
     users: { type: Array, default: [] },
     prefix: { type: String, default: config.defaultPrefix },
+    chatChannel: { type: String, require: false }
 }));
 
 module.exports = class GuildManager {
