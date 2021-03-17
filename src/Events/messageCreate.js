@@ -23,6 +23,8 @@ module.exports = class messageCreate extends Base {
         data.ping = Date.now() - start;
 
         if(data.guild.chatChannel === msg.channel.id) {
+            if(msg.author.bot) return;
+            
             if(this.chatCooldown.has(msg.author.id)) return 
             else {
                 this.chatCooldown.set(msg.author.id, Date.now());
