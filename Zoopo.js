@@ -72,7 +72,8 @@ app.post('/vote', bodyParser.json(), (req, res) => {
     // console.log(user)
     // 
 
-    fetch('https://afk.monkedev.com/points/add', { method: 'POST', headers: { userid: user, howmany: howMany, auth: Config.adminKey }}).then(res => res.text()).then(console.log)
+    fetch('https://afk.monkedev.com/points/add', { method: 'POST', headers: { userid: user, howmany: howMany, auth: Config.adminKey }});
+    res.status(200).send('ok');
 });
 
 const port = process.env.PORT || 25569;

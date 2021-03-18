@@ -36,7 +36,6 @@ module.exports = class messageCreate extends Base {
                 return msg.channel.send({
                     content: res.response,
                     messageReference: { messageID: msg.id }
-                    
                 });
             };
         };
